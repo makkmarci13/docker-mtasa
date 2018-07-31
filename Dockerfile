@@ -2,7 +2,9 @@ FROM debian:latest
 
 ADD entrypoint.sh /entrypoint.sh
 
-RUN useradd -d /home/mtasa -m mtasa && \
+ENV MTA_USER="2000" \
+
+RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
