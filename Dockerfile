@@ -1,8 +1,8 @@
 FROM debian:latest
 
-ADD entrypoint.sh /entrypoint.sh
-
 ENV MTA_USER="2000"
+
+ADD entrypoint.sh /entrypoint.sh
 
 RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
     apt-get update && \
