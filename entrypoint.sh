@@ -17,4 +17,4 @@ if [ ! -e mtasa/mods/deathmatch/mtaserver.conf ]; then
 fi
 
 # Start mtasa server
-exec /home/mtasa/mtasa/mta-server64 -n -t -u
+exec /home/mtasa/mtasa/mta-server64 -n -t -u --maxplayers $SERVER_SLOT
