@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+usermod -u $MTA_USER mtasa
 cd /home/mtasa/
 
 if [ ! -e mtasa/mods/deathmatch/mtaserver.conf ]; then
