@@ -12,7 +12,7 @@ RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
     tar xfz mta.tar.gz && \
     mv multitheftauto_linux_* mtasa && \
     rm mta.tar.gz && \
-    chown -R mtasa:mtasa mtasa && \
+    chown -R mtasa mtasa && \
     chmod 777 /entrypoint.sh
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
