@@ -1,12 +1,10 @@
 FROM debian:latest
 
-ENV MTA_USER="1000" \
-    MTA_GROUP="2000"
+ENV MTA_USER="1000"
 
 ADD entrypoint.sh /entrypoint.sh
 
-RUN groupadd -g "$MTA_GROUP" mtasa && \
-    useradd -u "$MTA_USER" -g "$MTA_GROUP" -d /home/mtasa -m mtasa && \
+RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
