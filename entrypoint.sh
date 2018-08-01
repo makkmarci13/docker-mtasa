@@ -2,6 +2,7 @@
 set -e
 
 cd /home/mtasa/
+chown -R $MTA_USER mtasa
 
 if [ ! -e mtasa/mods/deathmatch/mtaserver.conf ]; then
     echo "Downloading config and resources..."
