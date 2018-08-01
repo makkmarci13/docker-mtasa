@@ -1,7 +1,7 @@
 FROM debian:latest
 
-ARG MTA_USER=1000 \
-    MTA_GROUP=2000
+ENV MTA_USER="1000" \
+    MTA_GROUP="2000"
 
 ADD entrypoint.sh /entrypoint.sh
 
