@@ -15,7 +15,7 @@ RUN groupadd -g "$MTA_GROUP" mtasa && \
     mv multitheftauto_linux_* mtasa && \
     rm mta.tar.gz && \
     chown -R mtasa:mtasa mtasa && \
-    chmod -R 674 mtasa && \
+    chmod -R 774 mtasa && \
     chmod 777 /entrypoint.sh
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
