@@ -1,11 +1,13 @@
 FROM debian:latest
 
+ARG MTA_USER=1000
+
 ENV SERVER_SLOT=32 \
-    UID=1000
+    FTP_USER_ID=$MTA_USER
 
 ADD entrypoint.sh /entrypoint.sh
 
-RUN useradd -u "$UID" -d /home/mtasa -m mtasa && \
+RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
@@ -20,6 +22,6 @@ VOLUME /home/mtasa/mtasa/mods/deathmatch
 
 EXPOSE 22003 22005 22126
 
-ENTRYPOINT [ "/user" ]
+USER mtasa
 
 CMD ["/entrypoint.sh"]
