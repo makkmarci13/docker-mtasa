@@ -2,8 +2,6 @@
 set -e
 
 cd /home/mtasa/
-usermod -u $UID mtasa
-groupmod -g $UID mtasa
 
 if [ ! -e mtasa/mods/deathmatch/mtaserver.conf ]; then
     echo "Downloading config and resources..."
