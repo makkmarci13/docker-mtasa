@@ -1,7 +1,7 @@
 FROM debian:latest
 
-ENV MTA_USER=1000 \
-    SERVER_SLOT=32
+ARG MTA_USER=1000
+ENV SERVER_SLOT=32
 
 ADD entrypoint.sh /entrypoint.sh
 
