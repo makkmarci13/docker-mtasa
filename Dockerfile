@@ -8,7 +8,7 @@ ENV SERVER_SLOT=32 \
 
 ADD entrypoint.sh /entrypoint.sh
 
-RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
+RUN useradd -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
