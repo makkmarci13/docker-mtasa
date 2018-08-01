@@ -1,10 +1,12 @@
 FROM debian:latest
 
-ARG MTA_USER=2000
+ARG MTA_USER=1000 \
+    MTA_GROUP=2000
 
 ADD entrypoint.sh /entrypoint.sh
 
-RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
+RUN groupadd -g "$MTA_GROUP" mtasa && \
+    useradd -u "$MTA_USER" -g "$MTA_GROUP" -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
@@ -12,7 +14,7 @@ RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
     tar xfz mta.tar.gz && \
     mv multitheftauto_linux_* mtasa && \
     rm mta.tar.gz && \
-    chown -R mtasa mtasa && \
+    chown -R mtasa:mtasa mtasa && \
     chmod 777 /entrypoint.sh
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
