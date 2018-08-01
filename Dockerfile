@@ -3,7 +3,8 @@ FROM debian:latest
 ARG MTA_USER=1000
 
 ENV SERVER_SLOT=32 \
-    FTP_USER_ID=$MTA_USER
+    FTP_USER_ID=$MTA_USER \
+    UID=1000
 
 ADD entrypoint.sh /entrypoint.sh
 
