@@ -7,7 +7,8 @@ ENV FTP_USER_ID=1000 \
 ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
-RUN useradd -u "$FTP_USER_ID" -d /home/mtasa -m mtasa && \
+RUN groupadd -g "$FTP_USER_ID" mtasa && \
+    useradd -u "$FTP_USER_ID" -g mtasa -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
@@ -17,12 +18,12 @@ RUN useradd -u "$FTP_USER_ID" -d /home/mtasa -m mtasa && \
     rm mta.tar.gz && \
     chown -R mtasa mtasa && \
     chmod 777 /entrypoint.sh
+    
+ENTRYPOINT ["/entrypoint.sh"]
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
 
 EXPOSE 22003 22005 22126
-
-ENTRYPOINT ["/entrypoint.sh"]
 
 USER mtasa
 
