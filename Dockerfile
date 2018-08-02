@@ -17,6 +17,8 @@ RUN groupadd -g 1000 mtasa && \
     rm mta.tar.gz && \
     chown -R mtasa mtasa && \
     chmod 777 /entrypoint.sh
+    chmod 777 /start.sh
+    chmod +x /entrypoint.sh
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
 
