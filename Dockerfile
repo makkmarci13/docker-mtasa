@@ -3,6 +3,9 @@ FROM debian:latest
 ENV UID=1000 \
     SERVER_SLOT=32
     
+RUN apk add --no-cache -U \
+            su-exec
+    
 ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
