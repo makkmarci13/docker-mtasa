@@ -27,6 +27,4 @@ EXPOSE 22003 22005 22126
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-USER mtasa
-
 CMD ["/start.sh"]
