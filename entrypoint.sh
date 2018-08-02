@@ -8,5 +8,4 @@ if [ $(id -u) = 0 ]; then
   if [[ -v GID ]]; then
     groupmod -g $GID mtasa
   fi
-  su-exec mtasa:mtasa /start.sh
 fi
