@@ -1,13 +1,10 @@
 FROM debian:latest
    
-ENV FTP_USER_ID=1000 \
-    SERVER_SLOT=32
+ENV SERVER_SLOT=32
     
-ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
-RUN groupadd -g 1000 mtasa && \
-    useradd -u 1000 -g mtasa -d /home/mtasa -m mtasa && \
+RUN mkdir /home/mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
@@ -15,16 +12,10 @@ RUN groupadd -g 1000 mtasa && \
     tar xfz mta.tar.gz && \
     mv multitheftauto_linux_* mtasa && \
     rm mta.tar.gz && \
-    chown -R mtasa mtasa && \
-    chmod 777 /entrypoint.sh && \
     chmod 777 /start.sh
-    
-RUN chmod +x /entrypoint.sh
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
 
 EXPOSE 22003 22005 22126
-
-ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/start.sh"]
