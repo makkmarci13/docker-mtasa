@@ -6,7 +6,7 @@ ENV UID=1000 \
 ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
-RUN useradd -u 1000 -d /home/mtasa -m mtasa && \
+RUN mkdir /home/mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
@@ -14,7 +14,6 @@ RUN useradd -u 1000 -d /home/mtasa -m mtasa && \
     tar xfz mta.tar.gz && \
     mv multitheftauto_linux_* mtasa && \
     rm mta.tar.gz && \
-    chown -R mtasa mtasa && \
     chmod 777 /entrypoint.sh && \
     chmod 777 /start.sh
 
