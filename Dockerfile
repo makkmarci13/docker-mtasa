@@ -6,7 +6,7 @@ ENV UID=1000 \
 ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
-RUN useradd -u $UID -d /home/mtasa mtasa && \
+RUN useradd -u 1000 -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
