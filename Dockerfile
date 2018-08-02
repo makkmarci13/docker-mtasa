@@ -3,8 +3,8 @@ FROM debian:latest
 ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
-RUN groupadd -g "$FTP_USER_ID" mtasa && \
-    useradd -u "$FTP_USER_ID" -g mtasa -d /home/mtasa -m mtasa && \
+RUN groupadd -g 1000 mtasa && \
+    useradd -u 1000 -g mtasa -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     cd /home/mtasa && \
