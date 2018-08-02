@@ -9,6 +9,7 @@ ADD start.sh /start.sh
 RUN useradd -u 1000 -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
+    apt-get -y install sudo && \
     cd /home/mtasa && \
     wget -O mta.tar.gz https://linux.mtasa.com/dl/153/multitheftauto_linux_x64-1.5.3.tar.gz && \
     tar xfz mta.tar.gz && \
