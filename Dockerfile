@@ -17,6 +17,8 @@ RUN useradd -u 1000 -d /home/mtasa -m mtasa && \
     chown -R mtasa mtasa && \
     chmod 777 /entrypoint.sh && \
     chmod 777 /start.sh
+    
+RUN chmod +x /entrypoint.sh
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
 
