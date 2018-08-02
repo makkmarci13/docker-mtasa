@@ -1,9 +1,5 @@
 FROM debian:latest
-
-ENV FTP_USER_ID=1000 \
-    SERVER_SLOT=32
     
-
 ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
@@ -18,13 +14,16 @@ RUN groupadd -g "$FTP_USER_ID" mtasa && \
     rm mta.tar.gz && \
     chown -R mtasa mtasa && \
     chmod 777 /entrypoint.sh
-    
-ENTRYPOINT ["/entrypoint.sh"]
 
 VOLUME /home/mtasa/mtasa/mods/deathmatch
 
 EXPOSE 22003 22005 22126
 
+ENTRYPOINT ["/entrypoint.sh"]
+
 USER mtasa
+
+ENV FTP_USER_ID=1000 \
+    SERVER_SLOT=32
 
 CMD ["/start.sh"]
