@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-usermod -u $UID mtasa
+sudo usermod -u $UID mtasa
