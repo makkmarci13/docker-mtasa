@@ -9,7 +9,8 @@ RUN apk add --no-cache -U \
 ADD entrypoint.sh /entrypoint.sh
 ADD start.sh /start.sh
 
-RUN useradd -u 1000 -d /home/mtasa -m mtasa && \
+RUN groupadd -g 1000 mtasa && \
+    useradd -u 1000 -g 1000 -d /home/mtasa -m mtasa && \
     apt-get update && \
     apt-get install -y wget unzip && \
     apt-get -y install sudo && \
@@ -18,7 +19,7 @@ RUN useradd -u 1000 -d /home/mtasa -m mtasa && \
     tar xfz mta.tar.gz && \
     mv multitheftauto_linux_* mtasa && \
     rm mta.tar.gz && \
-    chown -R mtasa mtasa && \
+    chown -R mtasa:mtasa mtasa && \
     chmod 777 /entrypoint.sh && \
     chmod 777 /start.sh
     
