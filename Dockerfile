@@ -5,7 +5,7 @@ ARG MTA_USER=1000
 ENV SERVER_SLOT=32 \
     FTP_USER_ID=$MTA_USER
 
-ADD entrypoint.sh /entrypoint.sh
+ADD start.sh /start.sh
 
 RUN useradd -u "$MTA_USER" -d /home/mtasa -m mtasa && \
     apt-get update && \
