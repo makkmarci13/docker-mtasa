@@ -1,7 +1,6 @@
 FROM debian:latest
    
-ENV SERVER_SLOT=32 \
-    UID=1000
+ENV SERVER_SLOT=32
     
 ADD start.sh /start.sh
 
@@ -18,7 +17,5 @@ RUN mkdir /home/mtasa && \
 VOLUME /home/mtasa/mtasa/mods/deathmatch
 
 EXPOSE 22003 22005 22126
-
-RUN echo $(id -u)
 
 CMD ["/start.sh"]
