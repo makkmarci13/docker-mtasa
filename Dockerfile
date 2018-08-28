@@ -1,31 +1,17 @@
-FROM debian:latest
-   
-ENV UID=1000 \
-    SERVER_SLOT=32
-    
-ADD entrypoint.sh /entrypoint.sh
-ADD start.sh /start.sh
+FROM        ubuntu:18.04
 
-RUN groupadd -g 1000 mtasa && \
-    useradd -u 1000 -g 1000 -d /home/mtasa -m mtasa && \
-    apt-get update && \
-    apt-get install -y wget unzip && \
-    apt-get -y install sudo && \
-    cd /home/mtasa && \
-    wget -O mta.tar.gz https://linux.mtasa.com/dl/153/multitheftauto_linux_x64-1.5.3.tar.gz && \
-    tar xfz mta.tar.gz && \
-    mv multitheftauto_linux_* mtasa && \
-    rm mta.tar.gz && \
-    chown -R mtasa:mtasa mtasa && \
-    chmod 777 /entrypoint.sh && \
-    chmod 777 /start.sh
-    
-RUN chmod +x /entrypoint.sh
+LABEL       author="makkmarci13" maintainer="makkmarci03@gmail.com"
 
-VOLUME /home/mtasa/mtasa/mods/deathmatch
+RUN         apt update \
+            && apt upgrade -y \
+            && apt install -y libstdc++6 lib32stdc++6 tar curl iproute2 openssl wget unzip \
+            && useradd -d /home/container -m container
 
-EXPOSE 22003 22005 22126
+USER        container
+ENV         USER=container HOME=/home/container
 
-ENTRYPOINT ["/entrypoint.sh"]
+WORKDIR     /home/container
 
-CMD ["/start.sh"]
+COPY        ./entrypoint.sh /entrypoint.sh
+
+CMD         ["/bin/bash", "/entrypoint.sh"]
