@@ -1,4 +1,4 @@
-FROM        ubuntu:18.04
+FROM        debian:latest
 
 LABEL       author="makkmarci13" maintainer="makkmarci03@gmail.com"
 
