@@ -1,4 +1,4 @@
-FROM        debian:latest
+FROM        ubuntu:latest
 
 LABEL       author="makkmarci13" maintainer="makkmarci03@gmail.com"
 
