@@ -4,7 +4,7 @@ LABEL       author="makkmarci13" maintainer="makkmarci03@gmail.com"
 
 RUN         apt update \
             && apt upgrade -y \
-            && apt install -y libstdc++6 lib32stdc++6 tar curl iproute2 openssl wget unzip libmysqlclient-dev \
+            && apt install -y libstdc++6 lib32stdc++6 tar curl iproute2 openssl wget unzip libmysqlclient-dev mysql-client \
             && useradd -d /home/container -m container
 
 USER        container
